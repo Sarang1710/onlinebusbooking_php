@@ -110,8 +110,8 @@
                   $image = $row['post_image'];
                   $date = $row['post_date'];
                   $time = $row['post_via_time'];
-                  $bus_stations = split(" ",$intermediate_station);
-                  $bus_times = split(" ",$time);
+                  $bus_stations = explode(" ",$intermediate_station);
+                  $bus_times = explode(" ",$time);
               
 
            ?>

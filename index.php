@@ -35,7 +35,7 @@
 
                     $count = ceil($count / $bus_per_page) ;
 
-                    $query = "SELECT * FROM posts LIMIT $page_1,$bus_per_page";
+                    $query = "SELECT * FROM posts WHERE post_date  > CURRENT_DATE LIMIT $page_1,$bus_per_page";
                     $select_all_posts_query = mysqli_query($connection,$query);
 
                     while($row = mysqli_fetch_assoc($select_all_posts_query)) {
