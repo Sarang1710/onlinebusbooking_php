@@ -120,7 +120,7 @@
                                     ?>
                                 <input type="hidden" name="count" value =<?php echo $_POST['passenger_count'] ?>>    
                                 
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                         <label class="control-label col-sm-2" for="email">Source:</label>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" id="email" placeholder="Source" name="source">
@@ -130,6 +130,34 @@
                                         <label class="control-label col-sm-2" for="email">Destination:</label>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" id="email" placeholder="Destination" name="destination">
+                                        </div>
+                                    </div> -->
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2" for="email">Source : </label>
+                                        <div class="col-sm-10">
+                                        <select class="custom-select form-control " name="source" id="">
+                                            <option selected disabled>Select Source</option>
+                                            <?php
+                                            for ($i=0; $i < sizeof($bus_stations); $i++) { ?>
+                                             <option value="<?php echo $bus_stations[$i]; ?>"><?php echo $bus_stations[$i]; ?></option>
+                                            <?php 
+                                            }
+                                            ?>
+                                        </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2" for="email">Source : </label>
+                                        <div class="col-sm-10">
+                                        <select class="custom-select form-control" name="destination" id="email">
+                                            <option selected disabled>Select Source</option>
+                                            <?php
+                                            for ($i=0; $i < sizeof($bus_stations); $i++) { ?>
+                                             <option value="<?php echo $bus_stations[$i]; ?>"><?php echo $bus_stations[$i]; ?></option>
+                                            <?php 
+                                            }
+                                            ?>
+                                        </select>
                                         </div>
                                     </div>
                                     <?php
@@ -175,6 +203,7 @@
                                     $destination = $_POST['destination'];
                                     $cost = 0;
 
+                                    if(array_search($source,$bus_stations)<array_search($destination,$bus_stations)){
 
                                     for ($i=0; $i < sizeof($bus_stations); $i++) { 
 
@@ -236,6 +265,9 @@
                                         echo "Ticket Booked Sucessfully...!!!";
                                     }
                                     //header("Location: profile.php");
+                                }else{
+                                    echo "Please enter Source and Destination Correctly....";
+                                }
                                 }
 
                                 ?>
